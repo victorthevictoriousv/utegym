@@ -1,44 +1,29 @@
 <template>
-  <div>
+  <div class="site">
     <TheHeader />
-    <main>
-      <nuxt />
+    <main class="site__main">
+      <div class="site__content">
+        <nuxt />
+      </div>
     </main> 
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/nav/TheHeader'
+import TheFooter from '@/components/nav/TheFooter'
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TheFooter
   }
 }
 </script>
 
-
-<style>
-html {
-  font-size: 16px;
-}
-
-body {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
+<style lang="scss">
+@import "@/assets/scss/config.scss";
+@import "@/assets/scss/elements.scss";
+@import "@/assets/scss/layout.scss";
 </style>

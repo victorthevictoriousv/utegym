@@ -1,0 +1,21 @@
+.site {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+  min-height: 100vh;
+
+  &__header {
+    display: flex;
+    flex: 0 100px;
+  }
+
+  &__main {
+    display: flex;
+    flex: 1 1 100%;
+  }
+
+  &__footer {
+    display: flex;
+    flex: 0 100px;
+  }
+}
