@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section>
     <h1>Utegym</h1>
   </section>
 </template>
