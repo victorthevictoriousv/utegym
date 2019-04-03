@@ -26,4 +26,5 @@ export default {
 @import "@/assets/scss/config.scss";
 @import "@/assets/scss/elements.scss";
 @import "@/assets/scss/layout.scss";
+@import "@/assets/scss/helpers.scss";
 </style>

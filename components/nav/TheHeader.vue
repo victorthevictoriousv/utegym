@@ -12,7 +12,7 @@
         </g>
       </svg>
     </nuxt-link>
-    <nav class="header__nav">
+    <nav class="header__nav clearfix">
       <nuxt-link v-if="!loggedIn" aria-label="To login" to="/login">Logga in</nuxt-link>
       <nuxt-link v-else to="/" aria-label="Go home">Home</nuxt-link>
     </nav>
@@ -30,11 +30,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/config.scss";
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $dark;
 
   &__logo {
     width: 100%;
