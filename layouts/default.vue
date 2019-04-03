@@ -27,4 +27,5 @@ export default {
 @import "@/assets/scss/elements.scss";
 @import "@/assets/scss/layout.scss";
 @import "@/assets/scss/helpers.scss";
+@import "@/assets/scss/typo.scss";
 </style>

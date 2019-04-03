@@ -1,3 +1,3 @@
 <template>
-  <h1>Event</h1>
+  <h1 class="heading heading--lg">Event</h1>
 </template>

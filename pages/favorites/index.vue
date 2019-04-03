@@ -1,3 +1,3 @@
 <template>
-  <h1>Favorites</h1>
+  <h1 class="heading heading--lg">Favorites</h1>
 </template>

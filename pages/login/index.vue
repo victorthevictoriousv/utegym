@@ -1,6 +1,6 @@
 <template>
   <section class="section__login section">
-    <h1>{{ register ? 'Registrera dig' : 'Logga in' }}</h1>
+    <h1 class="heading heading--lg">{{ register ? 'Registrera dig' : 'Logga in' }}</h1>
     <form class="login-form" action="/">
       <div class="login-form__input">
         <label for="email">Email</label>
