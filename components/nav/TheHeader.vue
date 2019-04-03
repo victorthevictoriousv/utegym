@@ -11,14 +11,19 @@
           <path fill="#BFF683" d="M12,337.248912 C12,337.248912 29.5502446,567.308963 351.216472,337.248912 C672.8827,107.18886 662.63245,337.248912 662.63245,337.248912 C662.63245,337.248912 729.567973,570.68886 1056,337.248912"/>
         </g>
       </svg>
-    </nuxt-link>   
+    </nuxt-link>
+    <nav class="header__nav">
+      <nuxt-link v-if="!loggedIn" aria-label="To login" to="/login">Logga in</nuxt-link>
+      <nuxt-link v-else to="/" aria-label="Go home">Home</nuxt-link>
+    </nav>
   </header>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
+  computed: {
+    loggedIn() {
+      return this.$store.getters['auth/loggedIn']
     }
   }
 }
@@ -34,6 +39,17 @@ export default {
   &__logo {
     width: 100%;
     height: 40px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100px;
+    width: 25%;
   }
 }
 </style>

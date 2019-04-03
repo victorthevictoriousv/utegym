@@ -14,8 +14,23 @@
     flex: 1 1 100%;
   }
 
+  &__content {
+    width: 100%;
+  }
+
   &__footer {
     display: flex;
     flex: 0 100px;
+  }
+}
+
+.section {
+  &__login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
   }
 }

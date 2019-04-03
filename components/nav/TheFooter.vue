@@ -48,6 +48,7 @@ export default {
 
 .footer {
   background: linear-gradient($gradient-blue, $gradient-dark);
+  cursor: pointer;
 
   &__nav {
     width: 100%;
