@@ -65,3 +65,18 @@ input {
     border: none;
   }
 }
+
+button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: 6px;
+
+  &:active,
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}

@@ -44,13 +44,4 @@
 .section {
   position: relative;
   overflow: hidden;
-
-  &__login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
 }
