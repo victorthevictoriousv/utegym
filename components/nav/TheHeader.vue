@@ -33,9 +33,6 @@ export default {
 @import "@/assets/scss/config.scss";
 
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: $dark;
 
   &__logo {
