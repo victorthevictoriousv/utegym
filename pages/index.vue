@@ -49,7 +49,7 @@ export default {
   }
 
   input {
-    font-weight: 400;
+    font-weight: 500;
     color: #b7b7b7;
     background-color: #626262;
     border-radius: 10px;
@@ -57,14 +57,17 @@ export default {
 
     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: #b7b7b7;
+      text-transform: capitalize
     }
 
     &:-ms-input-placeholder { /* Internet Explorer 10-11 */
       color: #b7b7b7;
+      text-transform: capitalize
     }
 
     &::-ms-input-placeholder { /* Microsoft Edge */
       color: #b7b7b7;
+      text-transform: capitalize
     }
   }
 }
