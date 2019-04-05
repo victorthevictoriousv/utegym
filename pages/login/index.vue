@@ -3,15 +3,15 @@
     <h1 :class="'heading heading--lg ' + (register ? 'peach' : 'blue')">{{ register ? 'Registrera dig' : 'Logga in' }}</h1>
     <form class="login-form" action="/">
       <div class="login-form__input">
-        <label for="email">Email</label>
-        <input type="email" name="email">
+        <label for="email">Email:</label>
+        <input ref="email" type="email" name="email">
       </div>
       <div class="login-form__input">
-        <label for="password">Lösenord</label>
-        <input type="password" name="password">
+        <label for="password">Lösenord:</label>
+        <input autocomplete type="password" name="password">
       </div>
-      <small>{{ (register ? 'Har du redan ett konto? ' : 'Har du inte ett konto? ') + 'Klicka ' }}<a @click="register = !register" href="#">här</a></small>
-      <button :class="'login-form__button ' + (register ? 'peach--bg' : 'blue--bg')">{{ register ? 'Registrera mig' : 'Logga in' }}</button>
+      <a @click="register = !register" href="#"><small>{{ (register ? 'Har du redan ett konto? ' : 'Har du inte ett konto? ') + 'Klicka ' }}här</small></a>
+      <button @click.prevent="$store.commit('auth/setLoggedIn', true)" :class="'login-form__button ' + (register ? 'peach--bg' : 'blue--bg')">{{ register ? 'Registrera mig' : 'Logga in' }}</button>
     </form>
   </section>
 </template>
@@ -22,6 +22,11 @@ export default {
     return {
       register: false
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.email.focus()
+    })
   }
 }
 </script>
@@ -38,7 +43,7 @@ export default {
   width: 100%;
 
   h1 {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
 }
 
@@ -66,7 +71,7 @@ export default {
   max-width: 400px;
 
   > :not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   &__input {
@@ -90,6 +95,9 @@ export default {
   &__button {
     padding: 10px 20px;
   }
+
+  a {
+    margin-top: 40px;
+  }
 }
 </style>
-

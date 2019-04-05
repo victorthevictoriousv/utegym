@@ -7,3 +7,9 @@ export const getters = {
     return state.loggedIn
   }
 }
+
+export const mutations = {
+  setLoggedIn(state, boolean) {
+    state.loggedIn = boolean
+  }
+}
