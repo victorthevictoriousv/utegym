@@ -2,6 +2,10 @@
 
 //Heading
 .heading {
+    &--md {
+      font-size: 32px;
+    }
+
     &--lg {
       font-size: 60px;
     }

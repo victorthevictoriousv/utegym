@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h1>gyms</h1>
     <GymCard />
   </section> 
 </template>
