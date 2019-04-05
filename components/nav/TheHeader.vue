@@ -40,7 +40,7 @@ export default {
 @import "@/assets/scss/config.scss";
 
 .header {
-  background: linear-gradient(to bottom, #1B1E24, #242832, rgba(#222326,.2));
+  background: linear-gradient(to bottom, #1B1E24, #1B1E24, rgba(#222326,.2));
 
   &__logo {
     width: 100%;
