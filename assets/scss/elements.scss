@@ -37,11 +37,6 @@ a {
   color: inherit;
 }
 
-button {
-  color: inherit;
-  background: none;
-}
-
 h1,
 h2,
 h3 {
@@ -68,18 +63,24 @@ input {
 }
 
 button {
-  padding: 10px 20px;
   border: none;
+  color: inherit;
+  background: none;
+  padding: 0;
   outline: none;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 6px;
-
+  
   &:active,
   &:focus {
     border: none;
     outline: none;
   }
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
 img {
