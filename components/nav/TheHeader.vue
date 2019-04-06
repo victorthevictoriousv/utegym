@@ -55,7 +55,7 @@ export default {
     right: 0;
     top: 0;
     height: 100px;
-    width: 25%;
+    margin-right: 20px;
   }
 }
 </style>

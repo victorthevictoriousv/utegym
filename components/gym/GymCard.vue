@@ -4,9 +4,25 @@
       <img class="gym-card__image" :src="photo" alt="photo">
       <h1 class="heading heading--md">{{ name }}</h1>
     </header>
-    <div>{{ rate }}</div>
-    <p>{{ address }}</p>
-    <div v-if="events"></div>
+    <div class="gym-card__info">
+      <div class="gym-card__info--left">
+        <div class="gym-card__rates">
+          <svg v-for="star in rate" :key="star" xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
+            <path fill="#FFB644" d="M10.201,0.758 L12.679,6.623 L19.023,7.168 C19.463,7.206 19.642,7.755 19.308,8.044 L14.496,12.213 L15.938,18.415 C16.038,18.846 15.571,19.185 15.193,18.956 L9.741,15.668 L4.289,18.956 C3.91,19.184 3.444,18.845 3.544,18.415 L4.986,12.213 L0.173,8.043 C-0.161,7.754 0.017,7.205 0.458,7.167 L6.802,6.622 L9.28,0.758 C9.452,0.35 10.029,0.35 10.201,0.758 Z"/>
+          </svg>
+        </div>
+        <p>{{ address }}</p>
+      </div>
+      <nuxt-link class="gym-card__info--right" tag="button" to="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+          <g fill="#BFF683" transform="translate(-1)">
+            <path d="M12.322,19.314 L11.862,22.048 C11.8011596,22.4207758 11.9555454,22.7960245 12.2611029,23.018056 C12.5666604,23.2400874 12.971247,23.2710123 13.307,23.098 L15.765,21.815 L18.223,23.098 C18.5588281,23.2715736 18.9638303,23.2409342 19.2697231,23.0188129 C19.5756159,22.7966916 19.7301057,22.4210608 19.669,22.048 L19.209,19.314 L21.188,17.373 C21.457046,17.1072334 21.553152,16.7124277 21.4363585,16.3527377 C21.3195651,15.9930477 21.0098544,15.7300131 20.636,15.673 L17.894,15.266 L16.659,12.783 C16.4892421,12.445233 16.1435269,12.2320632 15.7655,12.2320632 C15.3874731,12.2320632 15.0417579,12.445233 14.872,12.783 L13.638,15.266 L10.896,15.672 C10.5221456,15.7290131 10.2124349,15.9920477 10.0956415,16.3517377 C9.978848,16.7114277 10.074954,17.1062334 10.344,17.372 L12.322,19.314 Z"/>
+            <path d="M27.551,3.189 L24.411,3.189 L24.411,1.447 C24.4110001,1.06305842 24.2584115,0.694856676 23.98683,0.423462772 C23.7152486,0.152068868 23.3469415,-0.000265336271 22.963,6.04738484e-16 L22.733,6.04738484e-16 C21.933844,7.16453554e-16 21.286,0.647843967 21.286,1.447 L21.286,3.189 L10.207,3.189 L10.207,1.447 C10.207,0.647843967 9.55915603,4.93023415e-16 8.76,4.4408921e-16 L8.53,4.4408921e-16 C7.73084397,3.95155005e-16 7.083,0.647843967 7.083,1.447 L7.083,3.189 L3.983,3.189 C2.33686731,3.18844714 1.00165598,4.52186805 1,6.168 L1,27.021 C1.00220348,28.6653427 2.33465731,29.9977965 3.979,30 L27.552,30 C29.1963427,29.9977965 30.5287965,28.6653427 30.531,27.021 L30.531,6.168 C30.5287954,4.52326744 29.1957332,3.19065263 27.551,3.189 Z M27.163,26.632 L4.368,26.632 L4.368,10.4 L27.168,10.4 L27.163,26.632 Z"/>
+          </g>
+        </svg>
+      </nuxt-link>
+    </div>
+    
     <nav class="gym-card__nav">
       <a :href="directions">
         <svg id="directions" aria-label="directions" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
@@ -14,11 +30,12 @@
         </svg>
         <label for="directions" aria-labelledby="directions">Vägbeskrivning</label>
       </a>
-      <div>
+      <div class="gym-card--social">
         <svg id="social" aria-label="social" @click="share = !share" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
           <path fill="#BFF683" d="M35.73875,28.259375 C33.3420428,28.2640015 31.08052,29.3702187 29.605625,31.259375 L16.27625,24.449375 C16.4654297,23.7880662 16.5663045,23.1046391 16.57625,22.416875 C16.5646066,21.6691415 16.4446083,20.9270466 16.22,20.21375 L29.495,13.42625 C31.8160128,16.4746125 36.0043679,17.3914041 39.3866347,15.591436 C42.7689016,13.7914679 44.3480339,9.80534619 43.1160703,6.17741568 C41.8841066,2.54948516 38.2042131,0.349210423 34.4252688,0.981028647 C30.6463245,1.61284687 27.8823108,4.89050664 27.8975,8.721875 C27.9071605,9.41164189 28.0086787,10.0970471 28.199375,10.76 L14.86625,17.579375 C12.7892168,14.9364027 9.25918616,13.9104118 6.08906702,15.0283181 C2.91894789,16.1462243 0.81333912,19.1595589 0.853612926,22.5207711 C0.893886732,25.8819834 3.07109175,28.8440016 6.26708627,29.8856295 C9.46308079,30.9272574 12.9675148,29.8169802 14.980625,27.125 L28.25,33.9125 C28.024477,34.6275661 27.9038466,35.3715588 27.891875,36.12125 C27.8980873,40.4560486 31.4164395,43.9654495 35.7512398,43.9606192 C40.0860402,43.955789 43.5965627,40.4385558 43.5931145,36.1037542 C43.5896663,31.7689525 40.0735525,28.2573089 35.73875,28.259375 L35.73875,28.259375 Z"/>
         </svg>
         <label for="social" aria-labelledby="social">Dela</label>
+        <transition name="gym-card__social">
         <ul v-if="share" class="gym-card__social"> 
           <li>
             <a :href="facebook" aria-label="share on facebook">
@@ -51,6 +68,7 @@
             </a>
           </li>
         </ul>
+        </transition>
       </div>
       <button>
         <svg id="heart" @click="favorite = !favorite" aria-label="heart" xmlns="http://www.w3.org/2000/svg" width="45" height="40" viewBox="0 0 45 40">
@@ -68,7 +86,7 @@ export default {
     return {
       name: 'Skälby Utegym',
       photo: "https://images.unsplash.com/photo-1528805639423-44f7d2a3b368?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
-      rate: '5',
+      rate: 5,
       address: 'Erik Dahlbergsväg 1',
       events: false,
       directions: 'https://www.google.com/maps/place/Erik+Dahlbergs+v%C3%A4g,+Kalmar/data=!4m2!3m1!1s0x4657d19d20fc5adf:0xe9a8c245ef88711a?sa=X&ved=2ahUKEwiq8uTg4LnhAhUGxqYKHWfTDgoQ8gEwAHoECAoQAQ',
@@ -98,12 +116,31 @@ export default {
     object-fit: cover;
   }
 
+  &__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px 0 16px;
+
+    &--left {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 100%;
+    }
+
+    &--right {
+      display: flex;
+    }
+  }
+
   &__nav {
     display: flex;
     position: relative;
-    background-color: $grey;
+    background-color: rgba($grey, .4);
     justify-content: space-between;
     padding: 2px 24px 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
 
     > * {
       display: flex;
@@ -121,27 +158,41 @@ export default {
     }
   }
 
+  &--social {
+    position: relative;
+  }
+
   &__social {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     position: absolute;
+    width: fit-content;
+    right: calc(-100% - 35px);
+    border-radius: 6px;
+    padding: 0 10px;
     background-color: $grey;
-    padding: 2px 24px 2px;
-    width: 100%;
-    left: 0;
-    bottom: -100%;
+    
 
     &::before {
       content: '';
       width: 0; 
       position: absolute;
       height: 0; 
-      left: 50%;
-      top: -6px;
-      transform: translateX(-50%);
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-bottom: 6px solid $grey;
+      top: 50%;
+      left: -6px;
+      transform: translateY(-50%);
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;   
+      border-right:6px solid $grey; 
+    }
+
+    &-enter-active, &-leave-active {
+      transition: opacity .5s;
+    }
+
+    &-enter, &-leave-to {
+      opacity: 0;
     }
   }
 }
