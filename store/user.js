@@ -1,10 +1,18 @@
 export const state = () => ({
-  loggedIn: false
+  loggedIn: false,
+  name: 'Victor',
+  id: '1',
+  email: 'victorthevictoriousv@gmail.com',
+  favorites: [],
+  events: []
 })
 
 export const getters = {
   loggedIn(state) {
     return state.loggedIn
+  },
+  getName(state) {
+    return state.name
   }
 }
 

@@ -11,7 +11,7 @@
         <input autocomplete type="password" name="password">
       </div>
       <a @click="register = !register" href="#"><small>{{ (register ? 'Har du redan ett konto? ' : 'Har du inte ett konto? ') + 'Klicka ' }}här</small></a>
-      <button class="button" @click.prevent="$store.commit('auth/setLoggedIn', true)" :class="'login-form__button ' + (register ? 'peach--bg' : 'blue--bg')">{{ register ? 'Registrera mig' : 'Logga in' }}</button>
+      <button class="button" @click.prevent="$store.commit('user/setLoggedIn', true)" :class="'login-form__button ' + (register ? 'peach--bg' : 'blue--bg')">{{ register ? 'Registrera mig' : 'Logga in' }}</button>
     </form>
   </section>
 </template>
