@@ -1,7 +1,7 @@
 <template>
   <section class="gym-card">
     <header>
-      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name"><img class="gym-card__image" :src="gym.photo" alt="photo"></nuxt-link>
+      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name + '?id=' + gym.id"><img class="gym-card__image" :src="gym.photo" alt="photo"></nuxt-link>
       <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name"><h1 class="heading heading--md">{{ gym.name }}</h1></nuxt-link>
     </header>
     <div class="gym-card__info">

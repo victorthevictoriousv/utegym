@@ -1,6 +1,7 @@
 export const state = () => ({
   gyms: [
     {
+      id: '1',
       name: 'Skälby Utegym',
       address: 'S:t Kristoffers väg 3, 392 38 Kalmar',
       photo: [
@@ -22,6 +23,7 @@ export const state = () => ({
       ]
     },
     {
+      id: '2',
       name: 'Skälby Utegym',
       address: 'S:t Kristoffers väg 3, 392 38 Kalmar',
       photo: [
@@ -43,6 +45,7 @@ export const state = () => ({
       ]
     },
     {
+      id: '3',
       name: 'Skälby Utegym',
       address: 'S:t Kristoffers väg 3, 392 38 Kalmar',
       photo: [
@@ -64,6 +67,7 @@ export const state = () => ({
       ]
     },
     {
+      id: '4',
       name: 'Skälby Utegym',
       address: 'S:t Kristoffers väg 3, 392 38 Kalmar',
       photo: [
@@ -85,6 +89,7 @@ export const state = () => ({
       ]
     },
     {
+      id: '5',
       name: 'Skälby Utegym',
       address: 'S:t Kristoffers väg 3, 392 38 Kalmar',
       photo: [

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <GymCard :gym="gym" v-for="gym in this.gyms" :key="gym.name"/>
+    <GymCard :gym="gym" v-for="gym in this.gyms" :key="gym.id"/>
   </section> 
 </template>
 
