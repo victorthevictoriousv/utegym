@@ -1,6 +1,6 @@
 <template>
   <section>
-    <GymCard />
+    <GymCard :gym="gym" v-for="gym in this.gyms" :key="gym.name"/>
   </section> 
 </template>
 
@@ -9,6 +9,11 @@ import GymCard from '@/components/gym/GymCard'
 export default {
   components: {
     GymCard
+  },
+  computed: {
+    gyms() {
+      return this.$store.getters['gyms/getGyms']
+    }
   }
 }
 </script>

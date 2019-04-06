@@ -1,19 +1,19 @@
 <template>
   <section class="gym-card">
     <header>
-      <img class="gym-card__image" :src="photo" alt="photo">
-      <h1 class="heading heading--md">{{ name }}</h1>
+      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name"><img class="gym-card__image" :src="gym.photo" alt="photo"></nuxt-link>
+      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name"><h1 class="heading heading--md">{{ gym.name }}</h1></nuxt-link>
     </header>
     <div class="gym-card__info">
       <div class="gym-card__info--left">
         <div class="gym-card__rates">
-          <svg v-for="star in rate" :key="star" xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
+          <svg v-for="star in gym.rate" :key="star" xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
             <path fill="#FFB644" d="M10.201,0.758 L12.679,6.623 L19.023,7.168 C19.463,7.206 19.642,7.755 19.308,8.044 L14.496,12.213 L15.938,18.415 C16.038,18.846 15.571,19.185 15.193,18.956 L9.741,15.668 L4.289,18.956 C3.91,19.184 3.444,18.845 3.544,18.415 L4.986,12.213 L0.173,8.043 C-0.161,7.754 0.017,7.205 0.458,7.167 L6.802,6.622 L9.28,0.758 C9.452,0.35 10.029,0.35 10.201,0.758 Z"/>
           </svg>
         </div>
-        <p>{{ address }}</p>
+        <p>{{ gym.address }}</p>
       </div>
-      <nuxt-link class="gym-card__info--right" tag="button" to="/">
+      <nuxt-link class="gym-card__info--right" tag="button" to="/events/event">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
           <g fill="#BFF683" transform="translate(-1)">
             <path d="M12.322,19.314 L11.862,22.048 C11.8011596,22.4207758 11.9555454,22.7960245 12.2611029,23.018056 C12.5666604,23.2400874 12.971247,23.2710123 13.307,23.098 L15.765,21.815 L18.223,23.098 C18.5588281,23.2715736 18.9638303,23.2409342 19.2697231,23.0188129 C19.5756159,22.7966916 19.7301057,22.4210608 19.669,22.048 L19.209,19.314 L21.188,17.373 C21.457046,17.1072334 21.553152,16.7124277 21.4363585,16.3527377 C21.3195651,15.9930477 21.0098544,15.7300131 20.636,15.673 L17.894,15.266 L16.659,12.783 C16.4892421,12.445233 16.1435269,12.2320632 15.7655,12.2320632 C15.3874731,12.2320632 15.0417579,12.445233 14.872,12.783 L13.638,15.266 L10.896,15.672 C10.5221456,15.7290131 10.2124349,15.9920477 10.0956415,16.3517377 C9.978848,16.7114277 10.074954,17.1062334 10.344,17.372 L12.322,19.314 Z"/>
@@ -24,7 +24,7 @@
     </div>
     
     <nav class="gym-card__nav">
-      <a :href="directions">
+      <a :href="gym.directions">
         <svg id="directions" aria-label="directions" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
           <path fill="#BFF683" d="M43.9589189,21.3944595 L24.4325676,1.86689189 L24.4325676,1.86689189 C24.0365279,1.45044614 23.4869924,1.21469515 22.9122973,1.21469515 C22.3376022,1.21469515 21.7880667,1.45044614 21.392027,1.86689189 L1.86689189,21.3944595 C1.45044614,21.7904992 1.21469515,22.3400346 1.21469515,22.9147297 C1.21469515,23.4894249 1.45044614,24.0389603 1.86689189,24.435 L21.3944595,43.9601351 L21.3944595,43.9601351 C21.7904992,44.3765809 22.3400346,44.6123319 22.9147297,44.6123319 C23.4894249,44.6123319 24.0389603,44.3765809 24.435,43.9601351 L43.9589189,24.4325676 C44.3745878,24.0366005 44.6098379,23.4875958 44.6098379,22.9135135 C44.6098379,22.3394312 44.3745878,21.7904265 43.9589189,21.3944595 Z M27.252973,28.3390541 L27.252973,22.9147297 L18.5740541,22.9147297 L18.5740541,29.4239189 L14.2297297,29.4239189 L14.2297297,20.7437838 C14.1941808,20.1581594 14.4113364,19.5853832 14.8261977,19.170522 C15.2410589,18.7556608 15.8138351,18.5385052 16.3994595,18.5740541 L27.2481081,18.5740541 L27.2481081,13.1497297 L34.8421622,20.7437838 L27.252973,28.3390541 Z" transform="translate(-1 -1)"/>
         </svg>
@@ -38,7 +38,7 @@
         <transition name="gym-card__social">
         <ul v-if="share" class="gym-card__social"> 
           <li>
-            <a :href="facebook" aria-label="share on facebook">
+            <a :href="gym.facebook" aria-label="share on facebook">
               <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
                 <g fill="none">
                   <circle cx="22.34" cy="22.34" r="22.34" fill="#3B5998"/>
@@ -48,7 +48,7 @@
             </a>
           </li>
           <li>
-            <a :href="whatsapp" aria-label="share on whatsapp">
+            <a :href="gym.whatsapp" aria-label="share on whatsapp">
               <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
                 <g fill="none">
                   <path fill="#4CAF50" d="M22.505625,0 L22.494375,0 L22.494375,0 C10.0884375,0 0,10.09125 0,22.5 C0,27.421875 1.58625,31.98375 4.2834375,35.6878125 L1.479375,44.0465625 L10.1278125,41.281875 C13.685625,43.63875 17.9296875,45 22.505625,45 C34.9115625,45 45,34.9059375 45,22.5 C45,10.0940625 34.9115625,0 22.505625,0 Z"/>
@@ -58,7 +58,7 @@
             </a>
           </li>
           <li>
-            <a :href="twitter" aria-label="share on twitter">
+            <a :href="gym.twitter" aria-label="share on twitter">
               <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
                 <g fill="none">
                   <circle cx="22.34" cy="22.34" r="22.34" fill="#55ACEE"/>
@@ -82,10 +82,11 @@
 
 <script>
 export default {
+  props: ['gym'],
   data() {
     return {
       name: 'Skälby Utegym',
-      photo: "https://images.unsplash.com/photo-1528805639423-44f7d2a3b368?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
+    
       rate: 5,
       address: 'Erik Dahlbergsväg 1',
       events: false,
@@ -114,6 +115,7 @@ export default {
   &__image {
     height: 115px;
     object-fit: cover;
+    border-top-right-radius: 50px;
   }
 
   &__info {
@@ -168,6 +170,7 @@ export default {
     justify-content: space-between;
     position: absolute;
     width: fit-content;
+    z-index: 1;
     right: calc(-100% - 35px);
     border-radius: 6px;
     padding: 0 10px;
