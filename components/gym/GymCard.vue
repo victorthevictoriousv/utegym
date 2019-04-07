@@ -1,9 +1,15 @@
 <template>
   <section class="gym-card">
+
+    <!-- Header -->
+
     <header>
       <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name + '?id=' + gym.id"><img class="gym-card__image" :src="gym.photo" alt="photo"></nuxt-link>
       <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name"><h1 class="heading heading--md">{{ gym.name }}</h1></nuxt-link>
     </header>
+
+    <!-- Information -->
+
     <div class="gym-card__info">
       <div class="gym-card__info--left">
         <div class="gym-card__rates">
@@ -23,6 +29,8 @@
       </nuxt-link>
     </div>
     
+    <!-- Navigation -->
+
     <nav class="gym-card__nav">
       <a :href="gym.directions">
         <svg id="directions" aria-label="directions" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
@@ -71,8 +79,8 @@
         </transition>
       </div>
       <button>
-        <svg id="heart" @click="favorite = !favorite" aria-label="heart" xmlns="http://www.w3.org/2000/svg" width="45" height="40" viewBox="0 0 45 40">
-          <path :fill="favorite ? '#BFF683' : 'none'" stroke="#BFF683" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M40.5818182,5.33863636 C38.4718823,3.22770982 35.6096005,2.04172032 32.625,2.04172032 C29.6403995,2.04172032 26.7781177,3.22770982 24.6681818,5.33863636 L22.5,7.50681818 L20.3318182,5.33863636 C15.9373888,0.944207136 8.81261123,0.94420719 4.41818194,5.33863648 C0.0237526441,9.73306577 0.023752591,16.8578434 4.41818182,21.2522727 L6.58636364,23.4204545 L22.5,39.3340909 L38.4136364,23.4204545 L40.5818182,21.2522727 C42.6927447,19.1423369 43.8787342,16.2800551 43.8787342,13.2954545 C43.8787342,10.310854 42.6927447,7.44857223 40.5818182,5.33863636 Z" transform="translate(0 -1)"/>
+        <svg id="heart" @click="$store.commit('user/setFavorite', gym.id)" aria-label="heart" xmlns="http://www.w3.org/2000/svg" width="45" height="40" viewBox="0 0 45 40">
+          <path :fill="$store.getters['user/getFavorite'](gym.id) ? '#BFF683' : 'none'" stroke="#BFF683" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M40.5818182,5.33863636 C38.4718823,3.22770982 35.6096005,2.04172032 32.625,2.04172032 C29.6403995,2.04172032 26.7781177,3.22770982 24.6681818,5.33863636 L22.5,7.50681818 L20.3318182,5.33863636 C15.9373888,0.944207136 8.81261123,0.94420719 4.41818194,5.33863648 C0.0237526441,9.73306577 0.023752591,16.8578434 4.41818182,21.2522727 L6.58636364,23.4204545 L22.5,39.3340909 L38.4136364,23.4204545 L40.5818182,21.2522727 C42.6927447,19.1423369 43.8787342,16.2800551 43.8787342,13.2954545 C43.8787342,10.310854 42.6927447,7.44857223 40.5818182,5.33863636 Z" transform="translate(0 -1)"/>
         </svg>
         <label for="heart" aria-labelledby="heart">Lägg till i favoriter</label>
       </button>
