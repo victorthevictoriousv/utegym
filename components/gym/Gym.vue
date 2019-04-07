@@ -147,8 +147,8 @@ export default {
     background-color: rgba($grey, .4);
     justify-content: space-between;
     padding: 2px 24px 8px;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: $border-radius-sm;
+    border-bottom-left-radius: $border-radius-sm;
 
     > * {
       display: flex;
