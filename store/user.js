@@ -38,5 +38,9 @@ export const mutations = {
     } else {
       return state.favorites.push(id)
     }
+  },
+  setName(state, name) {
+    // Set name on user
+    state.name = name
   }
 }
