@@ -17,7 +17,7 @@
     </nuxt-link>
     <nav class="header__nav clearfix">
       <nuxt-link v-if="!loggedIn" aria-label="To login" to="/login">Logga in</nuxt-link>
-      <nuxt-link v-else to="/profile" aria-label="go to profile">
+      <nuxt-link v-else-if="$route.name !== 'profile'" to="/profile" aria-label="go to profile">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="30" viewBox="0 0 28 30">
           <g fill="#FFF">
             <circle cx="14.367" cy="6.551" r="6.551"/>
