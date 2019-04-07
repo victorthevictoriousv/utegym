@@ -13,6 +13,16 @@ $purple-light: #9CA4E2;
 $black: #000;
 $white: #FFF;
 
+// Tint color
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+// Shade color
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
 // Typo
 $heading-font: coolvetica, sans-serif;
 $font: coolvetica, sans-serif;

@@ -169,7 +169,7 @@ export default {
         justify-content: space-between;
         align-items: center;
 
-        svg {
+        > svg {
           height: 100%;
           max-height: 32px;
         }
@@ -185,19 +185,24 @@ export default {
     display: flex;
     position: absolute;
     width: auto;
-    padding: 6px 12px;
+    padding: 16px 4px 8px;
     top: calc(100% - 4px);
     right: calc(100% - 56px);
     background-color: $purple;
     border-bottom-left-radius: $border-radius-md;
     border-bottom-right-radius: $border-radius-md;
 
+    svg {
+      height: 100%;
+      max-height: 28px;
+    }
+
     &-enter-active {
-      animation: slide-down .3s forwards;
+      animation: slide-down .2s forwards;
     }
 
     &-leave-active {
-      animation: slide-down .3s reverse forwards;
+      animation: slide-down .2s reverse forwards;
     }
 
     @keyframes slide-down {
