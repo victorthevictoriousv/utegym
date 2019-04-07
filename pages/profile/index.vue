@@ -1,8 +1,8 @@
 <template>
-  <section>
-    <header>
-      <img :src="Forest" alt="">
-      <h1 class="heading heading--lg">Profil</h1>
+  <section class="section__profile profile">
+    <header class="profile__header">
+      <img :src="Forest" alt="img">
+      <div class="profile__header--overlay"></div>
     </header>
     <div>
       <label for="name"></label>
@@ -26,3 +26,28 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/config.scss';
+
+.profile {
+  &__header {
+    position: relative;
+
+    img {
+      filter: blur(1px);
+      max-height: 180px;
+    }
+
+    &--overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba($dark, .1);
+    }
+  }
+}
+</style>
+

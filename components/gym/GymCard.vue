@@ -148,7 +148,7 @@ export default {
     position: relative;
     background-color: rgba($grey, .4);
     justify-content: space-between;
-    padding: 2px 24px 6px;
+    padding: 2px 24px 8px;
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
 
@@ -174,28 +174,31 @@ export default {
 
   &__social {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     position: absolute;
     width: fit-content;
     z-index: 1;
-    right: calc(-100% - 35px);
+    bottom: calc(-100% - 10px);
     border-radius: 6px;
     padding: 0 10px;
     background-color: $grey;
     
+    :not(:last-child) {
+      margin-right: 20px;
+    }
 
     &::before {
       content: '';
       width: 0; 
       position: absolute;
       height: 0; 
-      top: 50%;
-      left: -6px;
-      transform: translateY(-50%);
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;   
-      border-right:6px solid $grey; 
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid $grey;
     }
 
     &-enter-active, &-leave-active {

@@ -29,6 +29,10 @@
     justify-content: center;
     width: 100%;
     max-width: 100vw;
+
+    & .section__profile {
+      margin-top: -100px;
+    }
   }
 
   &__footer {
