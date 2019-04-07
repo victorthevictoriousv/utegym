@@ -31,6 +31,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  img {
+    height: calc(100% - 56px);
+    object-fit: cover;
+  }
 }
 
 .search {

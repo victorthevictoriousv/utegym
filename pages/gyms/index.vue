@@ -1,14 +1,14 @@
 <template>
   <section>
-    <GymCard :gym="gym" v-for="gym in this.gyms" :key="gym.id"/>
+    <Gym :gym="gym" v-for="gym in this.gyms" :key="gym.id"/>
   </section> 
 </template>
 
 <script>
-import GymCard from '@/components/gym/GymCard'
+import Gym from '@/components/gym/Gym'
 export default {
   components: {
-    GymCard
+    Gym
   },
   computed: {
     gyms() {
