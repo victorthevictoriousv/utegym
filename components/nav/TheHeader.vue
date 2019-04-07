@@ -1,5 +1,5 @@
 <template>
-  <header :class="($route.name === 'profile' ? 'header--profile ' : null) + 'header site__header'">
+  <header :class="'header site__header' + ($route.name === 'profile' ? ' header--profile' : '')">
     <h1 v-if="$route.name === 'events'" class="heading heading--l">Events</h1>
     <h1 v-else-if="$route.name === 'favorites'" class="heading heading--l">Favoriter</h1>
     <h1 v-else-if="$route.name === 'profile'" class="heading heading--l">Profil</h1>
