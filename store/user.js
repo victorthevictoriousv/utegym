@@ -3,7 +3,7 @@ export const state = () => ({
   name: 'Victor',
   id: '1',
   email: 'victorthevictoriousv@gmail.com',
-  favorites: [],
+  favorites: ['1', '2'],
   events: []
 })
 
@@ -18,6 +18,9 @@ export const getters = {
     return id => {
       return state.favorites.find(el => el === id)
     }
+  },
+  getFavorites(state) {
+    return state.favorites
   }
 }
 
