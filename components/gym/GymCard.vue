@@ -191,6 +191,7 @@ export default {
     background-color: $purple;
     border-bottom-left-radius: $border-radius-md;
     border-bottom-right-radius: $border-radius-md;
+    z-index: 1;
 
     svg {
       height: 100%;
@@ -214,6 +215,10 @@ export default {
         max-height: 48px;
       }
     }
+  }
+
+  &:last-child {
+    margin-bottom: $space-lg;
   }
 }
 </style>
