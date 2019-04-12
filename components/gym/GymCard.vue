@@ -22,7 +22,6 @@
         </ul>
       </nav>
     </header>
-
     <!-- Info -->
 
     <div class="gym-card__info">
@@ -95,15 +94,9 @@
 
 <script>
 export default {
+  props: ['gym'],
   data() {
     return {
-      gym: {
-        rate: 2,
-        name: 'Skälby utegym',
-        id: this.$route.name,
-        address: 'Erik Dahlbergsväg 1',
-        photo: "https://images.unsplash.com/photo-1554176259-aa961fc32671?ixlib=rb-1.2.1&auto=format&fit=crop&w=1605&q=80"
-      },
       share: false
     }
   }
