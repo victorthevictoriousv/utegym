@@ -9,7 +9,7 @@
 
     <!-- Information -->
     <div class="gym__content">
-      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name"><h1 class="heading heading--md">{{ gym.name }}</h1></nuxt-link>
+      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name + '?id=' + gym.id"><h1 class="heading heading--md">{{ gym.name }}</h1></nuxt-link>
       <div class="gym__info">
         <div class="gym__info--left">
           <div class="gym__rates">
@@ -17,7 +17,7 @@
               <path fill="#FFB644" d="M10.201,0.758 L12.679,6.623 L19.023,7.168 C19.463,7.206 19.642,7.755 19.308,8.044 L14.496,12.213 L15.938,18.415 C16.038,18.846 15.571,19.185 15.193,18.956 L9.741,15.668 L4.289,18.956 C3.91,19.184 3.444,18.845 3.544,18.415 L4.986,12.213 L0.173,8.043 C-0.161,7.754 0.017,7.205 0.458,7.167 L6.802,6.622 L9.28,0.758 C9.452,0.35 10.029,0.35 10.201,0.758 Z"/>
             </svg>
           </div>
-          <p>{{ gym.address }}</p>
+          <a :href="gym.directions"><p>{{ gym.address }}</p></a>
         </div>
         <nuxt-link class="gym__info--right" tag="button" to="/events/event">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">

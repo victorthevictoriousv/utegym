@@ -116,5 +116,10 @@ export const state = () => ({
 export const getters = {
   getGyms(state) {
     return state.gyms
+  },
+  getGymById(state, id) {
+    return id => {
+      return state.gyms.find(el => el.id === id)
+    }
   }
 }
