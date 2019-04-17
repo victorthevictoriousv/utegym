@@ -4,7 +4,7 @@ export const state = () => ({
   id: '1',
   email: 'victorthevictoriousv@gmail.com',
   favorites: ['1', '2'],
-  events: []
+  events: ['1']
 })
 
 export const getters = {

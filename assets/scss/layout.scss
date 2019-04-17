@@ -49,8 +49,11 @@
 .section {
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .container {
   padding: 10px 20px;
+  max-width: 500px;
+  width: 100%;
 }

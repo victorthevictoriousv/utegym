@@ -1,3 +1,13 @@
 <template>
-  <h1 class="heading heading--lg">Event</h1>
+  <Event />
 </template>
+
+<script>
+import Event from '@/components/event/Event'
+
+export default {
+  components: {
+    Event
+  }
+}
+</script>
