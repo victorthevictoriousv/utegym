@@ -153,7 +153,7 @@ export default {
   &__nav {
     display: flex;
     position: relative;
-    background-color: rgba($grey, .4);
+    background-color: rgba(grey, .4);
     justify-content: space-between;
     padding: 2px 24px 8px;
     border-bottom-right-radius: $border-radius-sm;
