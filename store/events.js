@@ -4,7 +4,8 @@ export const state = () => ({
       id: '1',
       name: 'Pump It Up',
       gymId: '1',
-      time: '2019/04/19, 08:00',
+      time: '18:00-20:00',
+      day: '2019/04/19',
       comments: [
         {
           name: 'Kerstin',

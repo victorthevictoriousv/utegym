@@ -42,7 +42,7 @@
               <transition name="event-card__social">
                 <ul v-if="share" class="event-card__social"> 
                   <li>
-                    <a :href="gym.facebook" aria-label="share on facebook">
+                    <a href="#" aria-label="share on facebook">
                       <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
                         <g fill="none">
                           <circle cx="22.34" cy="22.34" r="22.34" fill="#3B5998"/>
@@ -52,7 +52,7 @@
                     </a>
                   </li>
                   <li>
-                    <a :href="gym.whatsapp" aria-label="share on whatsapp">
+                    <a href="#" aria-label="share on whatsapp">
                       <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
                         <g fill="none">
                           <path fill="#4CAF50" d="M22.505625,0 L22.494375,0 L22.494375,0 C10.0884375,0 0,10.09125 0,22.5 C0,27.421875 1.58625,31.98375 4.2834375,35.6878125 L1.479375,44.0465625 L10.1278125,41.281875 C13.685625,43.63875 17.9296875,45 22.505625,45 C34.9115625,45 45,34.9059375 45,22.5 C45,10.0940625 34.9115625,0 22.505625,0 Z"/>
@@ -62,7 +62,7 @@
                     </a>
                   </li>
                   <li>
-                    <a :href="gym.twitter" aria-label="share on twitter">
+                    <a href="#" aria-label="share on twitter">
                       <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45">
                         <g fill="none">
                           <circle cx="22.34" cy="22.34" r="22.34" fill="#55ACEE"/>
@@ -220,8 +220,40 @@ export default {
     }
   }
 
+  &__social {
+    display: flex;
+    position: absolute;
+    width: auto;
+    padding: 12px 4px 8px;
+    top: calc(100%);
+    left: 0;
+    background-color: rgba(grey, .75);
+    border-bottom-left-radius: $border-radius-md;
+    border-bottom-right-radius: $border-radius-md;
+    z-index: 1;
+
+    &-enter-active {
+      animation: slide-down .2s forwards;
+    }
+
+    &-leave-active {
+      animation: slide-down .2s reverse forwards;
+    }
+
+    @keyframes slide-down {
+      from {
+        max-height: 0px;
+      }
+
+      to {
+        max-height: 48px;
+      }
+    }
+  }
+
   &__footer {
     display: block;
+    position: relative;
     width: 100%;
     padding: 10px 20px;
     background-color: rgba(grey, .6);
