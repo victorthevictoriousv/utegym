@@ -1,7 +1,7 @@
 <template>
   <section class="event-card container">
     <header>
-      <img class="event-card__img" src="https://images.unsplash.com/photo-1528805639423-44f7d2a3b368?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="img">
+      <img class="event-card__img" :src="$store.getters['gyms/getGymById'](event.gymId).photo" alt="img">
       <div>
         <div class="event-card__time">
           <p><span>0</span><span>6</span></p>
@@ -21,14 +21,14 @@
     </header>
     <div class="event-card--container">
       <div class="event-card__content"> 
-        <h2>Pump it up</h2>
+        <h2>{{ event.name }}</h2>
         <div class="event-card__details">
           <div>
-            19th <br /> April
+            {{ event.date.day }} <br /> {{ event.date.month }}
           </div>
           <div>
-            <h3>Skälby Utegym</h3>
-            <p>18:00-20:00</p>
+            <nuxt-link tag="h3" :to="'/gyms/' + $store.getters['gyms/getGymById'](event.gymId).name + '?id=' + event.gymId">{{ $store.getters['gyms/getGymById'](event.gymId).name }}</nuxt-link>
+            <p>{{ event.time }}</p>
           </div>
         </div>
       </div>
@@ -75,14 +75,14 @@
               </transition>
             </li>
             <li>
-              <a href="#">
+              <a :href="$store.getters['gyms/getGymById'](event.gymId).directions">
                 <svg aria-label="directions" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
                   <path fill="#BFF683" d="M43.9589189,21.3944595 L24.4325676,1.86689189 L24.4325676,1.86689189 C24.0365279,1.45044614 23.4869924,1.21469515 22.9122973,1.21469515 C22.3376022,1.21469515 21.7880667,1.45044614 21.392027,1.86689189 L1.86689189,21.3944595 C1.45044614,21.7904992 1.21469515,22.3400346 1.21469515,22.9147297 C1.21469515,23.4894249 1.45044614,24.0389603 1.86689189,24.435 L21.3944595,43.9601351 L21.3944595,43.9601351 C21.7904992,44.3765809 22.3400346,44.6123319 22.9147297,44.6123319 C23.4894249,44.6123319 24.0389603,44.3765809 24.435,43.9601351 L43.9589189,24.4325676 C44.3745878,24.0366005 44.6098379,23.4875958 44.6098379,22.9135135 C44.6098379,22.3394312 44.3745878,21.7904265 43.9589189,21.3944595 Z M27.252973,28.3390541 L27.252973,22.9147297 L18.5740541,22.9147297 L18.5740541,29.4239189 L14.2297297,29.4239189 L14.2297297,20.7437838 C14.1941808,20.1581594 14.4113364,19.5853832 14.8261977,19.170522 C15.2410589,18.7556608 15.8138351,18.5385052 16.3994595,18.5740541 L27.2481081,18.5740541 L27.2481081,13.1497297 L34.8421622,20.7437838 L27.252973,28.3390541 Z" transform="translate(-1 -1)"/>
                 </svg>
               </a>
             </li>
             <li>
-              <p>S:t Kristoffers väg 3, 392 38 Kalmar</p>
+              <p>{{ $store.getters['gyms/getGymById'](event.gymId).address }}</p>
             </li>
           </ul>
         </nav>
@@ -93,6 +93,7 @@
 
 <script>
 export default {
+  props: ['event'],
   data() {
     return {
       share: false
@@ -220,37 +221,6 @@ export default {
     }
   }
 
-  &__social {
-    display: flex;
-    position: absolute;
-    width: auto;
-    padding: 12px 4px 8px;
-    top: calc(100%);
-    left: 0;
-    background-color: rgba(grey, .75);
-    border-bottom-left-radius: $border-radius-md;
-    border-bottom-right-radius: $border-radius-md;
-    z-index: 1;
-
-    &-enter-active {
-      animation: slide-down .2s forwards;
-    }
-
-    &-leave-active {
-      animation: slide-down .2s reverse forwards;
-    }
-
-    @keyframes slide-down {
-      from {
-        max-height: 0px;
-      }
-
-      to {
-        max-height: 48px;
-      }
-    }
-  }
-
   &__footer {
     display: block;
     position: relative;
@@ -268,6 +238,42 @@ export default {
     svg {
       height: 30px;
       widows: 30px;
+    }
+  }
+
+  &__social {
+    display: flex;
+    position: absolute;
+    width: auto;
+    padding: 12px 4px 8px;
+    top: calc(100%);
+    left: 0;
+    background-color: rgba(grey, .75);
+    border-bottom-left-radius: $border-radius-md;
+    border-bottom-right-radius: $border-radius-md;
+    z-index: 1;
+
+    svg {
+      height: 100%;
+      max-height: 28px;
+    }
+
+    &-enter-active {
+      animation: slide-down .2s forwards;
+    }
+
+    &-leave-active {
+      animation: slide-down .2s reverse forwards;
+    }
+
+    @keyframes slide-down {
+      from {
+        max-height: 0px;
+      }
+
+      to {
+        max-height: 48px;
+      }
     }
   }
 }

@@ -5,7 +5,11 @@ export const state = () => ({
       name: 'Pump It Up',
       gymId: '1',
       time: '18:00-20:00',
-      day: '2019/04/19',
+      date: {
+        day: '19',
+        month: 'April',
+        year: '2019'
+      },
       comments: [
         {
           name: 'Kerstin',
@@ -21,3 +25,14 @@ export const state = () => ({
     }
   ]
 })
+
+export const getters = {
+  getEvents(state) {
+    return state.events
+  },
+  getEventById(state, id) {
+    return id => {
+      return state.events.find(el => el.id === id)
+    }
+  }
+}

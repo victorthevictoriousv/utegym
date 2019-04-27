@@ -6,6 +6,7 @@
 
 <script>
 import Gym from '@/components/gym/Gym'
+
 export default {
   components: {
     Gym
