@@ -3,7 +3,7 @@
     <header>
       <img class="event-card__img" :src="$store.getters['gyms/getGymById'](event.gymId).photo" alt="img">
       <div>
-        <div class="event-card__time">
+        <div class="event__time">
           <p><span>{{ this.daysLeft[0] }}</span><span>{{ this.daysLeft[1] }}</span></p>
           <p>Dagar <br /> kvar</p>
         </div>
@@ -22,7 +22,7 @@
     <div class="event-card--container">
       <div class="event-card__content"> 
         <nuxt-link tag="h2" :to="'events/' + this.formatName(event.name) +  '/?eventId=' + event.id + '&gymId=' + event.gymId">{{ event.name }}</nuxt-link>
-        <div class="event-card__details">
+        <div class="event__details">
           <div>
             {{ event.date.day }} <br /> {{ event.date.month }}
           </div>
@@ -131,37 +131,6 @@ export default {
       return days
     }
   },
-  mounted() {
-    let date = new Date
-
-    const months = {
-        'Januari': 'Jan',
-        'Februari': 'Feb',
-        'Mars': 'Mar',
-        'April': 'Apr',
-        'Maj': 'May',
-        'Juni': 'Jun',
-        'Juli': 'Jul',
-        'Augusti': 'Aug',
-        'September': 'Sep',
-        'Oktober': 'Oct',
-        'November': 'Now',
-        'December': 'Dec'
-    }
-
-    let monthOfEvent = months[this.event.date.month]
-    let deadline = new Date(`${monthOfEvent} ${this.event.date.day}, ${this.event.date.year}`).getTime(); 
-    let now = new Date().getTime()
-
-    let time = deadline - now
-
-    let days = Math.floor(time / (1000 * 60 * 60 * 24)) + 1
-
-    days = this.formatNumber(days)
-
-    console.log(days[0])
-    console.log(days[1])
-  },
   methods: {
     formatNumber(n) {
       return n > 9 ? "" + n: "0" + n;
@@ -208,34 +177,6 @@ export default {
     }
   }
 
-  &__time {
-    display: flex;
-    width: 100%;
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba($white, .5);
-    color: $green;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 14px;
-
-    span {
-      padding: 2px 5px;
-      background-color: $green;
-      color: $white;
-      font-size: 24px;
-    }
-
-    span:not(:first-child) {
-      margin-left: 3px;
-    }
-
-    p:not(:first-child) {
-      margin-left: 4px;
-    }
-  }
-
   &__img {
     height: 100%;
     width: 100%;
@@ -269,35 +210,6 @@ export default {
       width: 100%;
       font-size: 32px;
       border-bottom: 2px solid $white;
-    }
-  }
-
-  &__details {
-    display: flex;
-    height: calc(100% - 60px);
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-
-    div {
-      width: 50%;
-    }
-
-    div:first-of-type {
-      color: $green;
-      font-size: 30px;
-      font-weight: 700;
-      border-right: 2px solid $white;
-      line-height: 1;
-    }
-
-    div:last-of-type {
-      font-size: 14px;
-      padding-left: 10px;
-
-      h3 {
-        text-decoration: underline;
-      }
     }
   }
 

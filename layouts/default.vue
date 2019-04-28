@@ -29,4 +29,5 @@ export default {
 @import "@/assets/scss/layout.scss";
 @import "@/assets/scss/helpers.scss";
 @import "@/assets/scss/typo.scss";
+@import "@/assets/scss/event.scss";
 </style>
