@@ -6,8 +6,8 @@ export const state = () => ({
       gymId: '1',
       time: '18:00-20:00',
       date: {
-        day: '19',
-        month: 'April',
+        day: '10',
+        month: 'Maj',
         year: '2019'
       },
       comments: [

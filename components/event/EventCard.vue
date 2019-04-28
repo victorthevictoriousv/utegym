@@ -4,7 +4,7 @@
       <img class="event-card__img" :src="$store.getters['gyms/getGymById'](event.gymId).photo" alt="img">
       <div>
         <div class="event-card__time">
-          <p><span>0</span><span>6</span></p>
+          <p><span>{{ this.daysLeft[0] }}</span><span>{{ this.daysLeft[1] }}</span></p>
           <p>Dagar <br /> kvar</p>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1060" height="441" viewBox="0 0 1060 441">
@@ -21,7 +21,7 @@
     </header>
     <div class="event-card--container">
       <div class="event-card__content"> 
-        <h2>{{ event.name }}</h2>
+        <nuxt-link tag="h2" :to="'events/' + this.formatName(event.name) +  '/?eventId=' + event.id + '&gymId=' + event.gymId">{{ event.name }}</nuxt-link>
         <div class="event-card__details">
           <div>
             {{ event.date.day }} <br /> {{ event.date.month }}
@@ -97,6 +97,86 @@ export default {
   data() {
     return {
       share: false
+    }
+  },
+  computed: {
+    daysLeft() {
+      let date = new Date
+
+      const months = {
+          'Januari': 'Jan',
+          'Februari': 'Feb',
+          'Mars': 'Mar',
+          'April': 'Apr',
+          'Maj': 'May',
+          'Juni': 'Jun',
+          'Juli': 'Jul',
+          'Augusti': 'Aug',
+          'September': 'Sep',
+          'Oktober': 'Oct',
+          'November': 'Now',
+          'December': 'Dec'
+      }
+
+      let monthOfEvent = months[this.event.date.month]
+      let deadline = new Date(`${monthOfEvent} ${this.event.date.day}, ${this.event.date.year}`).getTime(); 
+      let now = new Date().getTime()
+
+      let time = deadline - now
+
+      let days = Math.floor(time / (1000 * 60 * 60 * 24)) + 1
+
+      days = this.formatNumber(days)
+
+      return days
+    }
+  },
+  mounted() {
+    let date = new Date
+
+    const months = {
+        'Januari': 'Jan',
+        'Februari': 'Feb',
+        'Mars': 'Mar',
+        'April': 'Apr',
+        'Maj': 'May',
+        'Juni': 'Jun',
+        'Juli': 'Jul',
+        'Augusti': 'Aug',
+        'September': 'Sep',
+        'Oktober': 'Oct',
+        'November': 'Now',
+        'December': 'Dec'
+    }
+
+    let monthOfEvent = months[this.event.date.month]
+    let deadline = new Date(`${monthOfEvent} ${this.event.date.day}, ${this.event.date.year}`).getTime(); 
+    let now = new Date().getTime()
+
+    let time = deadline - now
+
+    let days = Math.floor(time / (1000 * 60 * 60 * 24)) + 1
+
+    days = this.formatNumber(days)
+
+    console.log(days[0])
+    console.log(days[1])
+  },
+  methods: {
+    formatNumber(n) {
+      return n > 9 ? "" + n: "0" + n;
+    },
+    formatName(n) {
+      let formatedName = n.toLowerCase()
+      formatedName = formatedName
+        .replace(/ /g,"-")
+        .replace(/å/g, 'a')
+        .replace(/Å/g, 'a')
+        .replace(/ä/g, 'a')
+        .replace(/Ä/g, 'a')
+        .replace(/ö/g, 'o')
+        .replace(/Ö/g, 'o');
+      return formatedName
     }
   }
 }
