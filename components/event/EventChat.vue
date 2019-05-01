@@ -13,7 +13,7 @@
     </div>
     
     <ul>
-      <li v-for="comment in comments" :key="comment.name + comment.comment">
+      <li :class="comment.id === $store.getters['user/getUserId'] ? 'me' : 'others'" v-for="comment in comments" :key="comment.name + comment.comment">
         <h4>{{ comment.name }}</h4>
         <p>{{ comment.comment }}</p>
       </li>
@@ -64,7 +64,62 @@ export default {
   }
 
   > ul {
+    display: flex;
+    flex-direction: column;
     margin: 10px 0;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 8px;
+    }
+
+    > :not(:first-child) {
+      margin: 10px 0;
+    }
+
+    .me {
+      align-self: flex-end;
+      background-color: $peach;
+      border-top-left-radius: $border-radius-md;
+      border-bottom-left-radius: $border-radius-md;
+      border-bottom-right-radius: $border-radius-md;
+      margin-right: 15px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0; 
+        height: 0; 
+        border-top: 0px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid $peach;
+        left: 100%;
+        top: 0;
+      }
+    }
+
+    .others {
+      align-self: flex-start;
+      background-color: $green;
+      margin-left: 15px;
+      border-top-right-radius: $border-radius-md;
+      border-bottom-left-radius: $border-radius-md;
+      border-bottom-right-radius: $border-radius-md;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0; 
+        height: 0; 
+        border-top: 0px solid transparent;
+        border-bottom: 15px solid transparent; 
+        border-right: 15px solid $green; 
+        right: 100%;
+        top: 0;
+      }
+    }
   }
 }
 </style>

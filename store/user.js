@@ -21,6 +21,9 @@ export const getters = {
   },
   getFavorites(state) {
     return state.favorites
+  },
+  getUserId(state) {
+    return state.id
   }
 }
 
