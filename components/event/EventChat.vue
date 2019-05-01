@@ -1,7 +1,7 @@
 <template>
   <section class="event-chat">
     <div>
-      <input name="chat" type="text" placeholder="Skriv meddelande här">
+      <textarea name="chat" type="text" placeholder="Skriv meddelande här" />
       <button>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18">
           <g fill="none" fill-rule="evenodd" stroke="#BFF683" stroke-linecap="round" stroke-width="2">
@@ -35,7 +35,7 @@ export default {
     display: flex;
     align-items: center;
 
-    input {
+    textarea {
       width: 80%;
       align-self: center;
       font-size: inherit;
@@ -43,6 +43,13 @@ export default {
       font-weight: 600;
       padding: 8px;
       border-radius: $border-radius-md;
+      border: none;
+
+      &:active, &:focus {
+        outline: none;
+        border: none;
+        font-size: inherit;
+      }
     }
 
     button {
