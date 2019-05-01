@@ -1,8 +1,8 @@
 <template>
   <section class="event-chat">
     <div>
-      <textarea name="chat" type="text" placeholder="Skriv meddelande här" />
-      <button>
+      <textarea name="chat" type="text" placeholder="Skriv meddelande här" v-model="message" />
+      <button @click.prevent="sendMessage">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18">
           <g fill="none" fill-rule="evenodd" stroke="#BFF683" stroke-linecap="round" stroke-width="2">
             <polygon stroke-linejoin="round" points="18.962 8.804 9.981 12.704 1 16.604 3.871 8.804 1 1.004 9.981 4.904"/>
@@ -13,7 +13,7 @@
     </div>
     
     <ul>
-      <li :class="comment.id === $store.getters['user/getUserId'] ? 'me' : 'others'" v-for="comment in comments" :key="comment.name + comment.comment">
+      <li :class="comment.userId === $store.getters['user/getUserId'] ? 'me' : 'others'" v-for="comment in comments" :key="comment.name + comment.comment">
         <h4>{{ comment.name }}</h4>
         <p>{{ comment.comment }}</p>
         <p><small>{{ comment.time }}</small></p>
@@ -24,7 +24,35 @@
 
 <script>
 export default {
-  props: ['comments']
+  props: ['comments'],
+  data() {
+    return {
+      message: ''
+    }
+  },
+  methods: {
+    sendMessage() {
+      if ( this.message.length > 0 ) {
+        let time = new Date()
+
+        let payload = {
+          eventId: this.$route.query.eventId,
+          gymId: this.$route.query.gymId,
+          userId: this.$store.getters['user/getUserId'],
+          comment: this.message,
+          name: this.$store.getters['user/getName'],
+          time: time.getHours() + ':' + time.getMinutes()
+        }
+
+        this.$store.dispatch('events/addComment', payload)
+
+        this.message = ''
+      }
+    }
+  },
+  mounted() {
+    console.log(this.$route.query.eventId)
+  }
 }
 </script>
 
