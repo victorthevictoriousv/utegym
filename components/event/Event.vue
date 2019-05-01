@@ -90,12 +90,18 @@
       </nav>
       <p>{{ event.description }}</p>
     </footer>
+    <EventChat :comments="event.comments" />
   </section>
 </template>
 
 <script>
+import EventChat from '@/components/event/EventChat'
+
 export default {
   props: ['event'],
+  components: {
+    EventChat
+  },
   data() {
     return {
       share: false
