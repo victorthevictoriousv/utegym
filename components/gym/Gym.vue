@@ -4,12 +4,12 @@
     <!-- Header -->
 
     <header>
-      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name + '?id=' + gym.id"><img class="gym__image" :src="gym.photo" alt="photo"></nuxt-link>
+      <nuxt-link :aria-label="'to' + this.formatName(gym.name)" :to="'/gyms/' + gym.name + '?id=' + gym.id"><img class="gym__image" :src="gym.photo" alt="photo"></nuxt-link>
     </header>
 
     <!-- Information -->
     <div class="gym__content">
-      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + gym.name + '?id=' + gym.id"><h1 class="heading heading--md">{{ gym.name }}</h1></nuxt-link>
+      <nuxt-link :aria-label="'to' + gym.name" :to="'/gyms/' + this.formatName(gym.name) + '?id=' + gym.id"><h1 class="heading heading--md">{{ gym.name }}</h1></nuxt-link>
       <div class="gym__info">
         <div class="gym__info--left">
           <div class="gym__rates">
@@ -19,7 +19,7 @@
           </div>
           <a :href="gym.directions"><p>{{ gym.address }}</p></a>
         </div>
-        <nuxt-link class="gym__info--right" tag="button" to="/events/event">
+        <nuxt-link class="gym__info--right" tag="button" :to="'/gyms/' + this.formatName(gym.name) + '/events/?id=' + gym.id">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
             <g fill="#BFF683" transform="translate(-1)">
               <path d="M12.322,19.314 L11.862,22.048 C11.8011596,22.4207758 11.9555454,22.7960245 12.2611029,23.018056 C12.5666604,23.2400874 12.971247,23.2710123 13.307,23.098 L15.765,21.815 L18.223,23.098 C18.5588281,23.2715736 18.9638303,23.2409342 19.2697231,23.0188129 C19.5756159,22.7966916 19.7301057,22.4210608 19.669,22.048 L19.209,19.314 L21.188,17.373 C21.457046,17.1072334 21.553152,16.7124277 21.4363585,16.3527377 C21.3195651,15.9930477 21.0098544,15.7300131 20.636,15.673 L17.894,15.266 L16.659,12.783 C16.4892421,12.445233 16.1435269,12.2320632 15.7655,12.2320632 C15.3874731,12.2320632 15.0417579,12.445233 14.872,12.783 L13.638,15.266 L10.896,15.672 C10.5221456,15.7290131 10.2124349,15.9920477 10.0956415,16.3517377 C9.978848,16.7114277 10.074954,17.1062334 10.344,17.372 L12.322,19.314 Z"/>
@@ -95,17 +95,21 @@ export default {
   props: ['gym'],
   data() {
     return {
-      name: 'Skälby Utegym',
-    
-      rate: 5,
-      address: 'Erik Dahlbergsväg 1',
-      events: false,
-      directions: 'https://www.google.com/maps/place/Erik+Dahlbergs+v%C3%A4g,+Kalmar/data=!4m2!3m1!1s0x4657d19d20fc5adf:0xe9a8c245ef88711a?sa=X&ved=2ahUKEwiq8uTg4LnhAhUGxqYKHWfTDgoQ8gEwAHoECAoQAQ',
-      facebook: '#',
-      whatsapp: '#',
-      twitter: '#',
-      share: false,
-      favorite: false
+      share: false
+    }
+  },
+  methods: {
+    formatName(n) {
+      let formatedName = n.toLowerCase()
+      formatedName = formatedName
+        .replace(/ /g,"-")
+        .replace(/å/g, 'a')
+        .replace(/Å/g, 'a')
+        .replace(/ä/g, 'a')
+        .replace(/Ä/g, 'a')
+        .replace(/ö/g, 'o')
+        .replace(/Ö/g, 'o');
+      return formatedName
     }
   }
 }

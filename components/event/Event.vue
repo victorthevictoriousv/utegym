@@ -1,5 +1,8 @@
 <template>
   <section class="event container">
+
+    <!-- Header -->
+
     <header>
       <div class="event__time">
         <p><span>{{ this.daysLeft[0] }}</span><span>{{ this.daysLeft[1] }}</span></p>
@@ -7,6 +10,9 @@
       </div>
       <h1>{{ event.name }}</h1>
     </header>
+
+    <!-- Content -->
+
     <div>
       <img class="event__hero" :src="$store.getters['gyms/getGymById'](event.gymId).photo" alt="img">
       <div class="event__details">
@@ -19,6 +25,9 @@
         </div>
       </div>
     </div> 
+
+    <!-- footer -->
+
     <footer class="event__footer">
       <nav>
         <ul>

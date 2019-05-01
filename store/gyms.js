@@ -12,7 +12,7 @@ export const state = () => ({
       directions: 'https://www.google.com/maps/dir//Sk%C3%A4lby+Utegym,+S:t+Kristoffers+v%C3%A4g+3,+392+38+Kalmar/@56.6805235,16.3362681,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4657d198edddbcd3:0xb37b1f19454ee3ab!2m2!1d16.3384568!2d56.6805235',
       rate: '4',
       events: [
-        '1', '2', '3'
+        '1', '2'
       ],
       comments: [
         {name: 'Mats', comment: 'Det här var ett riktigt bra ställe', rating: '4'},
@@ -33,9 +33,6 @@ export const state = () => ({
       ],
       directions: 'https://www.google.com/maps/dir//Sk%C3%A4lby+Utegym,+S:t+Kristoffers+v%C3%A4g+3,+392+38+Kalmar/@56.6805235,16.3362681,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4657d198edddbcd3:0xb37b1f19454ee3ab!2m2!1d16.3384568!2d56.6805235',
       rate: '4',
-      events: [
-        {name: 'En kväll i Skälby', gym: 'Skälby Utegym', time: 'kl 9'}
-      ],
       comments: [
         {name: 'Mats', comment: 'Det här var ett riktigt bra ställe', rating: '4'},
         {name: 'Sara', comment: 'Om man ska träna ute i Kalmar då är de här', rating: '5'},
@@ -55,9 +52,6 @@ export const state = () => ({
       ],
       directions: 'https://www.google.com/maps/dir//Sk%C3%A4lby+Utegym,+S:t+Kristoffers+v%C3%A4g+3,+392+38+Kalmar/@56.6805235,16.3362681,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4657d198edddbcd3:0xb37b1f19454ee3ab!2m2!1d16.3384568!2d56.6805235',
       rate: '4',
-      events: [
-        {name: 'En kväll i Skälby', gym: 'Skälby Utegym', time: 'kl 9'}
-      ],
       comments: [
         {name: 'Mats', comment: 'Det här var ett riktigt bra ställe', rating: '4'},
         {name: 'Sara', comment: 'Om man ska träna ute i Kalmar då är de här', rating: '5'},
@@ -77,9 +71,6 @@ export const state = () => ({
       ],
       directions: 'https://www.google.com/maps/dir//Sk%C3%A4lby+Utegym,+S:t+Kristoffers+v%C3%A4g+3,+392+38+Kalmar/@56.6805235,16.3362681,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4657d198edddbcd3:0xb37b1f19454ee3ab!2m2!1d16.3384568!2d56.6805235',
       rate: '4',
-      events: [
-        {name: 'En kväll i Skälby', gym: 'Skälby Utegym', time: 'kl 9'}
-      ],
       comments: [
         {name: 'Mats', comment: 'Det här var ett riktigt bra ställe', rating: '4'},
         {name: 'Sara', comment: 'Om man ska träna ute i Kalmar då är de här', rating: '5'},

@@ -21,7 +21,7 @@
     </header>
     <div class="event-card--container">
       <div class="event-card__content"> 
-        <nuxt-link tag="h2" :to="'events/' + this.formatName(event.name) +  '/?eventId=' + event.id + '&gymId=' + event.gymId">{{ event.name }}</nuxt-link>
+        <nuxt-link tag="h2" :to="'/events/' + this.formatName(event.name) +  '/?eventId=' + event.id + '&gymId=' + event.gymId">{{ event.name }}</nuxt-link>
         <div class="event__details">
           <div>
             {{ event.date.day }} <br /> {{ event.date.month }}
