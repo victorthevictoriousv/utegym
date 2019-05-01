@@ -16,7 +16,7 @@ export const state = () => ({
         {
           name: 'Kerstin',
           id: '3',
-          comment: 'Det här var ett gutt gym!',
+          comment: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna.',
         },
         {
           name: 'Victor',

@@ -73,6 +73,11 @@ export default {
       flex-direction: column;
       position: relative;
       padding: 8px;
+      max-width: 80%;
+
+      p {
+        color: $dark;
+      }
     }
 
     > :not(:first-child) {
