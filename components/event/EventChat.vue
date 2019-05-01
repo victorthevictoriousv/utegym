@@ -49,9 +49,6 @@ export default {
         this.message = ''
       }
     }
-  },
-  mounted() {
-    console.log(this.$route.query.eventId)
   }
 }
 </script>

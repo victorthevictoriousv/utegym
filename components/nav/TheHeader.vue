@@ -35,9 +35,6 @@ export default {
     loggedIn() {
       return this.$store.getters['user/loggedIn']
     }
-  },
-  mounted() {
-    console.log(this.$route)
   }
 }
 </script>
