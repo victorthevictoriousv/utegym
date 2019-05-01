@@ -2,20 +2,20 @@
   <section class="event container">
     <header>
       <div class="event__time">
-        <p><span>0</span><span>1</span></p>
+        <p><span>{{ this.daysLeft[0] }}</span><span>{{ this.daysLeft[1] }}</span></p>
         <p>Dagar <br /> kvar</p>
       </div>
-      <h1>Pump It Up</h1>
+      <h1>{{ event.name }}</h1>
     </header>
     <div>
-      <img class="event__hero" src="https://images.unsplash.com/photo-1528805639423-44f7d2a3b368?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="img">
+      <img class="event__hero" :src="$store.getters['gyms/getGymById'](event.gymId).photo" alt="img">
       <div class="event__details">
         <div>
-          19 <br /> April
+          {{ event.date.day }} <br /> {{ event.date.month }}
         </div>
         <div>
-          <h3>Skälby Utegym</h3>
-          <p>18:00-20:00</p>
+          <nuxt-link tag="h3" :to="'/gyms/' + $store.getters['gyms/getGymById'](event.gymId).name + '?id=' + event.gymId">{{ $store.getters['gyms/getGymById'](event.gymId).name }}</nuxt-link>
+          <p>{{ event.time }}</p>
         </div>
       </div>
     </div> 
@@ -62,7 +62,7 @@
             </transition>
           </li>
           <li>
-            <a href="#">
+            <a :href="$store.getters['gyms/getGymById'](event.gymId).directions">
               <svg aria-label="directions" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
                 <path fill="#BFF683" d="M43.9589189,21.3944595 L24.4325676,1.86689189 L24.4325676,1.86689189 C24.0365279,1.45044614 23.4869924,1.21469515 22.9122973,1.21469515 C22.3376022,1.21469515 21.7880667,1.45044614 21.392027,1.86689189 L1.86689189,21.3944595 C1.45044614,21.7904992 1.21469515,22.3400346 1.21469515,22.9147297 C1.21469515,23.4894249 1.45044614,24.0389603 1.86689189,24.435 L21.3944595,43.9601351 L21.3944595,43.9601351 C21.7904992,44.3765809 22.3400346,44.6123319 22.9147297,44.6123319 C23.4894249,44.6123319 24.0389603,44.3765809 24.435,43.9601351 L43.9589189,24.4325676 C44.3745878,24.0366005 44.6098379,23.4875958 44.6098379,22.9135135 C44.6098379,22.3394312 44.3745878,21.7904265 43.9589189,21.3944595 Z M27.252973,28.3390541 L27.252973,22.9147297 L18.5740541,22.9147297 L18.5740541,29.4239189 L14.2297297,29.4239189 L14.2297297,20.7437838 C14.1941808,20.1581594 14.4113364,19.5853832 14.8261977,19.170522 C15.2410589,18.7556608 15.8138351,18.5385052 16.3994595,18.5740541 L27.2481081,18.5740541 L27.2481081,13.1497297 L34.8421622,20.7437838 L27.252973,28.3390541 Z" transform="translate(-1 -1)"/>
               </svg>
@@ -76,19 +76,69 @@
               <path d="M27.855,21.419 C27.855,25.279 18.055,22.179 14.544,28.408 C11.856,33.171 -1.456,26.183 1.233,21.419 C3.146,18.029 7.192,14.43 14.544,14.43 C21.896,14.43 27.855,17.559 27.855,21.419 Z"/>
             </g>
           </svg>
-          <p>Skapad av: <br /> VictoriousV</p>
+          <p>Skapad av: <br /> {{ event.creator }}</p>
         </div>
       </nav>
-      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.</p>
+      <p>{{ event.description }}</p>
     </footer>
   </section>
 </template>
 
 <script>
 export default {
+  props: ['event'],
   data() {
     return {
       share: false
+    }
+  },
+  computed: {
+    daysLeft() {
+      let date = new Date
+
+      const months = {
+          'Januari': 'Jan',
+          'Februari': 'Feb',
+          'Mars': 'Mar',
+          'April': 'Apr',
+          'Maj': 'May',
+          'Juni': 'Jun',
+          'Juli': 'Jul',
+          'Augusti': 'Aug',
+          'September': 'Sep',
+          'Oktober': 'Oct',
+          'November': 'Now',
+          'December': 'Dec'
+      }
+
+      let monthOfEvent = months[this.event.date.month]
+      let deadline = new Date(`${monthOfEvent} ${this.event.date.day}, ${this.event.date.year}`).getTime(); 
+      let now = new Date().getTime()
+
+      let time = deadline - now
+
+      let days = Math.floor(time / (1000 * 60 * 60 * 24)) + 1
+
+      days = this.formatNumber(days)
+
+      return days
+    }
+  },
+  methods: {
+    formatNumber(n) {
+      return n > 9 ? "" + n: "0" + n;
+    },
+    formatName(n) {
+      let formatedName = n.toLowerCase()
+      formatedName = formatedName
+        .replace(/ /g,"-")
+        .replace(/å/g, 'a')
+        .replace(/Å/g, 'a')
+        .replace(/ä/g, 'a')
+        .replace(/Ä/g, 'a')
+        .replace(/ö/g, 'o')
+        .replace(/Ö/g, 'o');
+      return formatedName
     }
   }
 }
@@ -121,6 +171,10 @@ export default {
   }
 
   &__details {
+    h3 {
+      cursor: pointer;
+    }
+
     div:first-of-type {
       flex: 0 0 35%;
     }
