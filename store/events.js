@@ -17,11 +17,13 @@ export const state = () => ({
           name: 'Kerstin',
           id: '3',
           comment: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna.',
+          time: '21:00'
         },
         {
           name: 'Victor',
           id: '1',
-          comment: 'Wow hit vill jag åka igen'
+          comment: 'Wow hit vill jag åka igen',
+          time: '21:00'
         }
       ]
     },
@@ -42,11 +44,13 @@ export const state = () => ({
           name: 'Kerstin',
           id: '3',
           comment: 'Det här var ett gutt gym!',
+          time: '21:00'
         },
         {
           name: 'Victor',
           id: '1',
-          comment: 'Wow hit vill jag åka igen'
+          comment: 'Wow hit vill jag åka igen',
+          time: '21:00'
         }
       ]
     }

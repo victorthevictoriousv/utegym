@@ -16,6 +16,7 @@
       <li :class="comment.id === $store.getters['user/getUserId'] ? 'me' : 'others'" v-for="comment in comments" :key="comment.name + comment.comment">
         <h4>{{ comment.name }}</h4>
         <p>{{ comment.comment }}</p>
+        <p><small>{{ comment.time }}</small></p>
       </li>
     </ul>
   </section>
@@ -72,11 +73,17 @@ export default {
       display: flex;
       flex-direction: column;
       position: relative;
-      padding: 8px;
+      padding: 10px;
       max-width: 80%;
 
       p {
         color: $dark;
+        margin: 4px 0 2px;
+      }
+
+      p:last-of-type {
+        text-align: right;
+        color: $grey;
       }
     }
 
