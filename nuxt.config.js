@@ -14,7 +14,8 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description },
       { name: 'msapplication-TileColor', content: '#da532c' },
-      { name: 'theme-color', content: '#212221' }
+      { name: 'theme-color', content: '#212221' },
+      { name: 'background_color', content: '#212221' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
