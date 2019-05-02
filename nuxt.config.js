@@ -46,6 +46,14 @@ module.exports = {
   ],
 
   /*
+  /** Manifest
+  */
+  manifest: {
+    theme_color: '#212221',
+    background_color: '#212221'
+  },
+
+  /*
   ** Nuxt.js modules
   */
   modules: [
